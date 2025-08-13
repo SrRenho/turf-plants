@@ -1,8 +1,6 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.db import database_sync_to_async
-from .models import Pixel
-
 
 class PixelConsumer(AsyncWebsocketConsumer):
     async def connect(self):
@@ -26,6 +24,7 @@ class PixelConsumer(AsyncWebsocketConsumer):
         await self.send(text_data=json.dumps(event["pixel"]))
 
     async def save_pixel(self, data):
+        from .models import Pixel
         # Use Django ORM to save to Postgres
         await database_sync_to_async(Pixel.objects.create)(
             x=data["x"], y=data["y"], color=data["color"]
