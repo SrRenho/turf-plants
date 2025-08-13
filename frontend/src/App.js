@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 
 function App() {
+  const PIXEL_SIZE = 10; // circle diameter in px
+  const HALF = PIXEL_SIZE / 2;
+
   const [pixels, setPixels] = useState(new Set());
   const socketRef = useRef(null);
 
@@ -51,16 +54,21 @@ function App() {
       style={{ width: '800px', height: '600px', border: '1px solid black', position: 'relative' }}
     >
       {[...pixels].map(coord => {
-        const [x, y] = coord.split(',');
+        const [x, y] = coord.split(',').map(Number);
         return (
-          <div key={coord} style={{
-            position: 'absolute',
-            left: `${x}px`,
-            top: `${y}px`,
-            width: '1px',
-            height: '1px',
-            backgroundColor: 'black'
-          }} />
+          <div
+            key={coord}
+            style={{
+              position: 'absolute',
+              left: `${x - HALF}px`,   // center the circle at (x,y)
+              top: `${y - HALF}px`,
+              width: `${PIXEL_SIZE}px`,
+              height: `${PIXEL_SIZE}px`,
+              borderRadius: '50%',
+              backgroundColor: 'black',
+              pointerEvents: 'none' // so clicks pass through the pixel divs
+            }}
+          />
         );
       })}
     </div>
@@ -68,3 +76,4 @@ function App() {
 }
 
 export default App;
+
