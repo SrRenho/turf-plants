@@ -25,7 +25,9 @@ class PixelConsumer(AsyncWebsocketConsumer):
 
     async def save_pixel(self, data):
         from .models import Pixel
-        # Use Django ORM to save to Postgres
-        await database_sync_to_async(Pixel.objects.create)(
-            x=data["x"], y=data["y"]
-        )
+        await database_sync_to_async(
+            lambda: Pixel.objects.update_or_create(
+                x=data["x"], y=data["y"],
+                defaults={}  # Add other fields to update here
+            )
+        )()
