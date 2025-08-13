@@ -5,7 +5,7 @@ function App() {
   const [pixels, setPixels] = useState(new Set());
 
   useEffect(() => {
-    fetch('http://localhost:8000/game_api/pixels/')
+    fetch('https://turf-plants.onrender.com/game_api/pixels/')
       .then(res => res.json())
       .then(data => setPixels(new Set(data.map(p => `${p[0]},${p[1]}`))));
   }, []);
@@ -14,7 +14,7 @@ function App() {
     const rect = e.target.getBoundingClientRect();
     const x = Math.floor(e.clientX - rect.left);
     const y = Math.floor(e.clientY - rect.top);
-    fetch('http://localhost:8000/game_api/paint/', {
+    fetch('https://turf-plants.onrender.com/game_api/paint/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ x, y })
