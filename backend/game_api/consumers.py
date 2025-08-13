@@ -27,5 +27,5 @@ class PixelConsumer(AsyncWebsocketConsumer):
         from .models import Pixel
         # Use Django ORM to save to Postgres
         await database_sync_to_async(Pixel.objects.create)(
-            x=data["x"], y=data["y"], color=data["color"]
+            x=data["x"], y=data["y"]
         )
