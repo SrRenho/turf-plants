@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'game_api',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -76,7 +77,16 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'turf_plants.wsgi.application'
+ASGI_APPLICATION = "turf_plants.asgi.application"
 
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [config('REDIS_URL')],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
