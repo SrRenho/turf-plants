@@ -1,2 +1,2 @@
-.env
+backend/.env
 db.sqlite3
