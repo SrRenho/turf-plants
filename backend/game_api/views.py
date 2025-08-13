@@ -1,13 +1,12 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-
-# In-memory store of black pixels
-pixels = set()  # store tuples (x, y)
+from .models import Pixel
 
 @api_view(['GET'])
 def get_pixels(request):
-    # return all painted pixels
-    return Response(list(pixels))
+    # fetch all pixels from DB
+    all_pixels = Pixel.objects.all().values_list('x', 'y')
+    return Response(list(all_pixels))
 
 @api_view(['POST'])
 def paint_pixel(request):
@@ -15,5 +14,5 @@ def paint_pixel(request):
     x = data.get('x')
     y = data.get('y')
     if x is not None and y is not None:
-        pixels.add((x, y))
+        Pixel.objects.get_or_create(x=x, y=y)  # avoids duplicates
     return Response({'status': 'ok'})

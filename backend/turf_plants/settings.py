@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import dj_database_url
+
 from pathlib import Path
 from decouple import config
 
@@ -79,13 +81,11 @@ WSGI_APPLICATION = 'turf_plants.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+DB_URL = config('EXTERNAL_DB_URL') if DEBUG else config('INTERNAL_DB_URL')
 
+DATABASES = {
+    'default': dict(dj_database_url.parse(DB_URL))
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
