@@ -1,6 +1,7 @@
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.http import JsonResponse
 from .models import Pixel
 
 @csrf_exempt
@@ -19,3 +20,13 @@ def paint_pixel(request):
     if x is not None and y is not None:
         Pixel.objects.get_or_create(x=x, y=y)  # avoids duplicates
     return Response({'status': 'ok'})
+
+
+def current_user(request):
+    if request.user.is_authenticated:
+        return JsonResponse({
+            'username': request.user.username,
+            'email': request.user.email,
+            'id': request.user.id,
+        })
+    return JsonResponse({'user': None})

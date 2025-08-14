@@ -15,14 +15,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.http import HttpResponse
 from django.urls import path, include
 
-def root(request):
-    return HttpResponse("OK")  # temporary placeholder
-
 urlpatterns = [
-    path('', root),  # temporary root for Render health checks
     path('admin/', admin.site.urls),
+
+    # API + login
+    #path('api/auth/', include('dj_rest_auth.urls')),              # login/logout
+    #path('api/auth/registration/', include('dj_rest_auth.registration.urls')),  # signup
+    path('accounts/', include('allauth.urls')),                   # Google OAuth
+
+    # game API
     path('game_api/', include('game_api.urls')),
 ]
