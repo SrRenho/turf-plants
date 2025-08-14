@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 import dj_database_url
+import os
 
 from pathlib import Path
 from decouple import config, Csv
@@ -173,3 +174,6 @@ SESSION_COOKIE_SAMESITE = 'None'
 CSRF_COOKIE_SAMESITE = 'None'
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+
+TEMPLATES[0]['DIRS'] = [os.path.join(BASE_DIR, '../frontend/build')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, '../frontend/build/static')]
