@@ -9,7 +9,7 @@ function App() {
   const [user, setUser] = useState(null);
   const socketRef = useRef(null);
 
-  const BACKEND = 'https://turfplants.onrender.com';
+  const BACKEND = 'https://turf-plants.onrender.com';
 
   // helper to get cookie (for CSRF)
   function getCookie(name) {
@@ -39,7 +39,7 @@ function App() {
 
   // WebSocket setup
   useEffect(() => {
-    const ws = new WebSocket('wss://turfplants.onrender.com/ws/pixels/');
+    const ws = new WebSocket('wss://turf-plants.onrender.com/ws/pixels/');
     socketRef.current = ws;
 
     ws.onmessage = (event) => {
