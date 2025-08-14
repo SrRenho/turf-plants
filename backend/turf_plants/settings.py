@@ -81,6 +81,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
     "https://turfplants.onrender.com",
+    "https://turf-plants.onrender.com",
 ]
 
 ROOT_URLCONF = 'turf_plants.urls'
@@ -169,6 +170,9 @@ AUTHENTICATION_BACKENDS = (
 
 LOGIN_REDIRECT_URL = 'https://turfplants.onrender.com/'
 LOGOUT_REDIRECT_URL  = 'https://turfplants.onrender.com/'
+
+
+
 
 SESSION_COOKIE_SAMESITE = 'None'
 CSRF_COOKIE_SAMESITE = 'None'
