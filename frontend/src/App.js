@@ -90,7 +90,7 @@ function App() {
 
   // Login (redirect to allauth Google flow)
   const startGoogleLogin = () => {
-    window.location.href = `${BACKEND}/accounts/google/login/`;
+    window.location.href = `${BACKEND}/accounts/login/`;
   };
 
   // Logout (redirect to allauth logout endpoint which will clear session and redirect)
