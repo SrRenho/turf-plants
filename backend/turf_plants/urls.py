@@ -26,5 +26,5 @@ urlpatterns = [
     # game API
     path('game_api/', include('game_api.urls')),
 
-    re_path(r'^.*$', TemplateView.as_view(template_name="index.html")),
+  #  re_path(r'^.*$', TemplateView.as_view(template_name="index.html")),
 ]
