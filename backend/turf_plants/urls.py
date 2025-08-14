@@ -17,18 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include, re_path
 from django.views.generic import TemplateView
-from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    # API + login
-    #path('api/auth/', include('dj_rest_auth.urls')),              # login/logout
-    #path('api/auth/registration/', include('dj_rest_auth.registration.urls')),  # signup
     path('accounts/', include('allauth.urls')),                   # Google OAuth
 
     # game API
     path('game_api/', include('game_api.urls')),
 
-    re_path(r'^.*$', login_required(TemplateView.as_view(template_name="index.html"))),
+    re_path(r'^.*$', TemplateView.as_view(template_name="index.html")),
 ]
