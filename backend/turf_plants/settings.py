@@ -75,16 +75,21 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
 
-CORS_ALLOW_CREDENTIALS = True
-
+CSRF_COOKIE_SECURE = True       # must be True for HTTPS
+CSRF_COOKIE_SAMESITE = "None"   # allows cross-origin requests
+SESSION_COOKIE_SECURE = True
 CSRF_TRUSTED_ORIGINS = [
     "https://turfplants.onrender.com",
-    "https://turf-plants.onrender.com",
-    "http://localhost:3000",
     "https://localhost:3000",
 ]
+
+CORS_ALLOWED_ORIGINS  = [
+    "https://turfplants.onrender.com",
+    "https://localhost:3000",
+]
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'turf_plants.urls'
 
@@ -176,9 +181,6 @@ AUTHENTICATION_BACKENDS = (
 
 
 
-CSRF_COOKIE_SECURE = True       # must be True for HTTPS
-CSRF_COOKIE_SAMESITE = "None"   # allows cross-origin requests
-SESSION_COOKIE_SECURE = True
 
 TEMPLATES[0]['DIRS'] = [os.path.join(BASE_DIR, '../frontend/build')]
 STATICFILES_DIRS = [os.path.join(BASE_DIR, '../frontend/build/static')]
