@@ -176,11 +176,9 @@ AUTHENTICATION_BACKENDS = (
 
 
 
-
-SESSION_COOKIE_SAMESITE = 'Lax'
-CSRF_COOKIE_SAMESITE = 'Lax'
-SESSION_COOKIE_SECURE = False
-CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = True       # must be True for HTTPS
+CSRF_COOKIE_SAMESITE = "None"   # allows cross-origin requests
+SESSION_COOKIE_SECURE = True
 
 TEMPLATES[0]['DIRS'] = [os.path.join(BASE_DIR, '../frontend/build')]
 STATICFILES_DIRS = [os.path.join(BASE_DIR, '../frontend/build/static')]
