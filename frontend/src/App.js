@@ -2,6 +2,7 @@ import React, { useState, createContext } from 'react';
 import './App.css';
 import Game from './Game.js';
 import Login from './Login.js';
+import WelcomeBanner from './WelcomeBanner.js'
 
 export const UserContext = createContext(null);
 
