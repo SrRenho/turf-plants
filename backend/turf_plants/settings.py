@@ -168,8 +168,9 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-LOGIN_REDIRECT_URL = 'https://turfplants.onrender.com/'
-LOGOUT_REDIRECT_URL  = 'https://turfplants.onrender.com/'
+# These redirect to backend domain! Not the frontend as they should! Imma encode the actual redirect url from frontend using next
+# LOGIN_REDIRECT_URL = '/'
+# LOGOUT_REDIRECT_URL  = '/'
 
 
 
