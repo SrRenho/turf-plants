@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .views import csrf
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),                   # Google OAuth
     path('game_api/', include('game_api.urls')),
+    path('csrf/', csrf, name='csrf'),
 ]
