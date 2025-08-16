@@ -27,7 +27,7 @@ export default function Game(){
 
   // WebSocket setup
   useEffect(() => {
-    const ws = new WebSocket('${WS_BACKEND}/ws/pixels/');
+    const ws = new WebSocket(`${WS_BACKEND}/ws/pixels/`);
     socketRef.current = ws;
 
     ws.onmessage = (event) => {
