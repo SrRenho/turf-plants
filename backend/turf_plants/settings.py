@@ -82,6 +82,7 @@ CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = [
     "https://turfplants.onrender.com",
     "https://turf-plants.onrender.com",
+    "http://localhost:3000",
 ]
 
 ROOT_URLCONF = 'turf_plants.urls'
