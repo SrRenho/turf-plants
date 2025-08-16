@@ -12,6 +12,7 @@ function App() {
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <div style={{ padding: 12 }}>
+        <WelcomeBanner />
         <Login />
         <Game />
       </div>
