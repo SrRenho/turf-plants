@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { BACKEND, WS_BACKEND } from './config';
 
 export default function Game(){
